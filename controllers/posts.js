@@ -99,9 +99,9 @@ const login = async (req, res) => {
 }
 
 const addRecipients = async (req, res) => {
-    console.log(req.body);
     const addRecipients = await Recipient.insertMany(req.body);
     console.log(addRecipients);
+    res.json({ message: "Recipients added successfully" });
 }
 
 

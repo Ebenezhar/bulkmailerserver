@@ -13,7 +13,7 @@ const recipientSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  id: {
+  ownerId: {
     type: mongoose.SchemaTypes.ObjectId,
     required: true,
   }
