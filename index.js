@@ -11,9 +11,11 @@ const Recipient = require("./Schema/Recipient");
 const registerRoutes = require("./Routes/registerRoutes");
 const loginRoutes = require('./Routes/loginRoutes.js')
 const portalRoutes = require('./Routes/portalRoutes.js')
+const rstPwdRoutes = require('./Routes/rstPwdRoutes.js')
 mongoose.connect(URL);
 
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/portal", portalRoutes);
+app.use("/reset", rstPwdRoutes);
 app.listen(process.env.PORT || 5000);

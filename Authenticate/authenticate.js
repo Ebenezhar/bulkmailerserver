@@ -1,13 +1,12 @@
-const { isNewExpression } = require("typescript");
-
 const secretKey = process.env.SECRET_KEY;
+const jwt = require('jsonwebtoken');
 
 const authenticate = function (req, res, next) {
     try {
         if (req.headers.authorization) {
             const verify = jwt.verify(req.headers.authorization, secretKey);
             if (verify) {
-                req.userid = verify.user._id;
+                req.userid = verify.id;
                 req.name = verify.name;
                 next();
             } else {
