@@ -97,7 +97,7 @@ const sendMail = (req, res) => {
                 var mailOptions = {
                     from: "Bulk Mailer Application",
                     to: `${receiver.email}`,
-                    subject: `Mail from`,
+                    subject: `Mail from Bulk Mailer`,
                     text: `${req.body.message}`,
                 };
                 transporter.sendMail(mailOptions, function (error, info) {
@@ -149,12 +149,21 @@ const login = async (req, res) => {
 }
 
 const addRecipients = async (req, res) => {
-    const addRecipients = await Recipient.insertMany(req.body);
-    res.json({ message: "Recipients added successfully" });
+    try {
+        const addRecipients = await Recipient.insertMany(req.body);
+        res.json({ message: "Recipients added successfully" });
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const addToDraft = async (req, res) => {
-    const result = await Draft.create(req.body);
+    try {
+        const result = await Draft.create(req.body);
+        res.status(200).json({ message: "Draft added" });
+    } catch (error) {
+        console.log(error);
+    }
 }
 const sendVerMail = (req, res) => {
     try {
@@ -209,18 +218,6 @@ const verifyOtp = async (req, res) => {
 }
 
 const resetPassword = async (req, res) => {
-    // try {
-    //     delete req.body.verPassword;
-    //     const salt = await bcryptjs.genSalt(10);
-    //     const hash = await bcryptjs.hash(req.body.password, salt);
-    //     req.body.password = hash;
-    //     const user = await User.create(req.body);
-    //     if (user) {
-    //         res.status(200).send({ message: `${req.body.firstName}, your profile has been registered successfully` });
-    //     }
-    // } catch (error) {
-    //     console.log(error);
-    // }
     try {
         console.log(req.body);
         delete req.body.verPassword;
