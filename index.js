@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 app.use(express.json());
 const cors = require("cors");
-app.use(cors({ orgin: "*" }));
+app.use(cors({ orgin: "https://bulkmailertool.netlify.app" }));
 const dotenv = require("dotenv").config();
 const URL = process.env.DB;
 const User = require("./Schema/User");
