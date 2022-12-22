@@ -11,7 +11,8 @@ const Recipient = require("./Schema/Recipient");
 const registerRoutes = require("./Routes/registerRoutes");
 const loginRoutes = require('./Routes/loginRoutes.js')
 const portalRoutes = require('./Routes/portalRoutes.js')
-const rstPwdRoutes = require('./Routes/rstPwdRoutes.js')
+const rstPwdRoutes = require('./Routes/rstPwdRoutes.js');
+mongoose.set("strictQuery", false);
 mongoose.connect(URL);
 
 app.use("/register", registerRoutes);

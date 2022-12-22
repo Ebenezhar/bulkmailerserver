@@ -1,10 +1,9 @@
 {
   "name": "bulkmailerback",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "engines": {
-    "node" : "14.x"
+    "node": "14.x"
   },
   "scripts": {
     "start": "node index.js",
@@ -15,11 +14,21 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "json-web-token": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.5.3",
-    "nodemailer": "^6.7.8",
+    "mongoose": "^6.8.1",
+    "nodemailer": "^6.8.0",
     "random-number": "^0.0.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ebenezhar/bulkmailerserver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ebenezhar/bulkmailerserver/issues"
+  },
+  "homepage": "https://github.com/Ebenezhar/bulkmailerserver#readme",
+  "description": ""
 }

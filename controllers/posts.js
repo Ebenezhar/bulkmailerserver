@@ -1,6 +1,6 @@
 const rn = require("random-number");
 var ObjectId = require('mongoose').Types.ObjectId;
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 1;
 const nodemailer = require("nodemailer");
 const User = require("../Schema/User");
 const Draft = require("../Schema/Draft");
@@ -123,29 +123,30 @@ const sendMail = (req, res) => {
     }
 }
 
-const login = async (req, res) => {
-    try {
-        const user = await User.findOne({ email: req.body.email });
-        if (user) {
-            const match = await bcryptjs.compare(req.body.password, user.password);
-            if (match) {
-                const token = jwt.sign({ id: user._id, name: user.firstName }, secretKey);
-                res.status(200).json({
-                    message: "Successfully Logged in",
-                    token: token,
-                    name: user.firstName,
-                    gender: user.gender,
-                    id: user.id,
-                });
-            } else {
-                res.status(400).json({ message: "Password is incorrect" });
-            }
-        } else {
-            res.status(400).json({ message: "User not found" });
-        }
-    } catch (error) {
-        console.log(error);
-    }
+const login = (req, res) => {
+    console.log(req.body);
+    // try {
+    //     const user = await User.findOne({ email: req.body.email });
+    //     if (user) {
+    //         const match = await bcryptjs.compare(req.body.password, user.password);
+    //         if (match) {
+    //             const token = jwt.sign({ id: user._id, name: user.firstName }, secretKey);
+    //             res.status(200).json({
+    //                 message: "Successfully Logged in",
+    //                 token: token,
+    //                 name: user.firstName,
+    //                 gender: user.gender,
+    //                 id: user.id,
+    //             });
+    //         } else {
+    //             res.status(400).json({ message: "Password is incorrect" });
+    //         }
+    //     } else {
+    //         res.status(400).json({ message: "User not found" });
+    //     }
+    // } catch (error) {
+    //     console.log(error);
+    // }
 }
 
 const addRecipients = async (req, res) => {
